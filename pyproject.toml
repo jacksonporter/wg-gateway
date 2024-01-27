@@ -20,15 +20,14 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
 ]
 keywords = ["python", "wireguard"]
-packages = [
-    {include = "wg_gateway"}
-]
-
+packages = [{ include = "wg_gateway" }]
 
 [tool.poetry.dependencies]
 python = "^3.12.1"
-uvicorn = {extras = ["standard"], version = "^0.27.0"}
-
+uvicorn = { extras = ["standard"], version = "^0.27.0" }
+click = "^8.1.7"
+click-default-group = "^1.2.4"
+fastapi = "^0.109.0"
 
 [tool.poetry.group.dev.dependencies]
 pylint = "^3.0.3"
@@ -36,6 +35,9 @@ flake8 = "^7.0.0"
 pytest = "^7.4.4"
 pytest-cov = "^4.1.0"
 mypy = "^1.8.0"
+
+[tool.poetry.scripts]
+wgg = 'wg_gateway.app:main'
 
 [build-system]
 requires = ["poetry-core"]

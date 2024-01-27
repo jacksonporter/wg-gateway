@@ -55,22 +55,29 @@ repos:
       - id: pylint
         name: pylint
         entry: pylint
+        args:
+          - wg_gateway
+          - tests
         language: system
+        pass_filenames: false
         types: [python]
       - id: mypy
         name: mypy
         entry: mypy
-        language: system
-        types: [python]
-      - id: pytest
-        name: pytest
-        entry: pytest
+        args:
+          - wg_gateway
+          - tests
+        pass_filenames: false
         language: system
         types: [python]
       - id: flake8
         name: flake8
         entry: flake8
+        args:
+          - wg_gateway
+          - tests
         language: system
+        pass_filenames: false
         types: [python]
       - id: hadolint
         name: hadolint
@@ -82,3 +89,11 @@ repos:
         entry: shellcheck
         language: system
         files: ^.*\.(sh|bash|zsh|envrc)$
+      - id: pytest
+        name: pytest
+        entry: pytest
+        args:
+          - tests/unit
+        language: system
+        pass_filenames: false
+        types: [python]
