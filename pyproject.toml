@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "wg-gateway"
+version = "0.0.1"
+description = "A \"gateway\" (UI/API) for Wireguard written in Python"
+authors = ["JP (Jackson Porter) <jackson@jacksonporterjp.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/jacksonporter/wg-gateway"
+repository = "https://github.com/jacksonporter/wg-gateway"
+documentation = "https://github.com/jacksonporter/wg-gateway"
+classifiers = [
+    "Topic :: Software Development :: Version Control :: Git",
+    "Development Status :: 1 - Planning",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Framework :: FastAPI",
+    "Framework :: Flake8",
+    "Framework :: Pytest",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+keywords = ["python", "wireguard"]
+packages = [
+    {include = "wg_gateway"}
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.12.1"
+uvicorn = {extras = ["standard"], version = "^0.27.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^3.0.3"
+flake8 = "^7.0.0"
+pytest = "^7.4.4"
+pytest-cov = "^4.1.0"
+mypy = "^1.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
