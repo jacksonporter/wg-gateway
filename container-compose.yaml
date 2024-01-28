@@ -1,0 +1,29 @@
+version: "3"
+services:
+  scylladb:
+    image: scylladb/scylla:latest
+    ports:
+      - "8000:8000"
+    command:
+      - --alternator-port
+      - "8000"
+      - --alternator-write-isolation=always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+      start_interval: 5s
+  ddbadmin:
+    depends_on:
+      scylladb:
+        condition: service_healthy
+        restart: true
+    build:
+      context: ./
+      dockerfile: Containerfile.ddbadmin
+    ports:
+      - "8001:8001"
+    environment:
+      DYNAMO_ENDPOINT: http://scylladb:8000

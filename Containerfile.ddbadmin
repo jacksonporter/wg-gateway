@@ -1,0 +1,7 @@
+FROM public.ecr.aws/docker/library/node:lts-alpine3.19
+
+RUN apk update && apk upgrade
+
+RUN npm install -g dynamodb-admin
+
+ENTRYPOINT [ "dynamodb-admin" ]
