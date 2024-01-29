@@ -1,1 +1,36 @@
-{}
+{
+  "configurations": [
+    {
+      "name": "Python: API Server",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/.venv/bin/wgg",
+      "args": [
+        "api",
+        "--reload"
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Python: CLI",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/.venv/bin/wgg",
+      "args": [
+        "db",
+        "bootstrap",
+        "--database-config",
+        "endpoint_url=http://localhost:8000",
+        "--database-config",
+        "region_name=us-west-2",
+        "--database-config",
+        "aws_access_key_id=RANDOM",
+        "--database-config",
+        "aws_secret_access_key=RANDOM"
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+  ]
+}

@@ -4,10 +4,21 @@ CLI entrypoint for the CLI
 
 import click
 
+from wg_gateway.cli.db.cli_command import get_db_group
 
-@click.command()
-def cli() -> None:
+
+def get_cli_group(*args, **kwargs) -> click.Command | click.Group:
     """
-    CLI entrypoint to start the CLI
+    Run on application start/starts application
     """
-    print("I am here!")
+
+    @click.group()
+    def cli() -> None:
+        """
+        CLI entrypoint to start the CLI group
+        """
+        pass
+
+    cli.add_command(get_db_group())
+
+    return cli

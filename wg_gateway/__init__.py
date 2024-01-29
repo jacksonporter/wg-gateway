@@ -2,6 +2,8 @@
 Package init
 """
 
+LOGGER_NAME = "wg_gateway"
+
 from typing import Callable as _Callable
 
 
