@@ -17,9 +17,9 @@ jobs:
       - run: 'echo "PYTHON_VERSION=$(cat .python-version)"'
     outputs:
       PYTHON_VERSION: ${{ steps.get-python-version.outputs.PYTHON_VERSION }}
-    
+
   pre-commit:
-    needs: 
+    needs:
       - get-python-version
     runs-on: ubuntu-latest
     container:
@@ -33,3 +33,4 @@ jobs:
           apt-get install -y git
           pip install -U pip
           pip install -U setuptools poetry pre-commit
+          poetry install --only dev
