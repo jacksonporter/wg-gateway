@@ -1,0 +1,14 @@
+name: Audit Source Code
+
+on:
+  - push
+
+jobs:
+  get-python-version:
+  runs-on: [ubuntu-latest]
+    steps:
+      - run: echo 'test'
+
+  # pre-commit:
+  #   container:
+  #     image: public.ecr.aws/docker/library/python:3.9.18-bullseye
