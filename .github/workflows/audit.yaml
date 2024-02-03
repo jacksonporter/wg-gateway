@@ -2,7 +2,7 @@ name: Audit
 run-name: ${{ github.actor }} is auditing source code on GitHub Actions 🚀
 on: [push]
 jobs:
-  "Get Python Version":
+  get-python-version:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
