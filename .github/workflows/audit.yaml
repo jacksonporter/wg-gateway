@@ -1,8 +1,34 @@
 name: Audit
+
 run-name: ${{ github.actor }} is auditing source code on GitHub Actions 🚀
+
 on: [push]
+
 jobs:
+
   get-python-version:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - uses: actions/checkout@v4
+      - id: get-python-version
+        run: 'echo "PYTHON_VERSION=$(cat $(.python-version))" >> ${GITHUB_OUTPUT}'
+    outputs:
+      PYTHON_VERSION: ${{ steps.get-python-version.outputs.PYTHON_VERSION }}
+    
+  pre-commit:
+    needs: 
+      - get-python-version
+    runs-on: ubuntu-latest
+    container:
+      image: public.ecr.aws/docker/library/python:${{ needs.get-python-version.outputs.PYTHON_VERSION }}-slim
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          apt-get update
+          apt-get install -y git
+          pip install -U pip
+          pip install -U setuptools poetry pre-commit
