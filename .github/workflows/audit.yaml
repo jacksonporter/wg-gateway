@@ -1,14 +1,9 @@
-name: Audit Source Code
-
-on:
-  - push
-
+name: Audit
+run-name: ${{ github.actor }} is auditing source code on GitHub Actions 🚀
+on: [push]
 jobs:
-  get-python-version:
-  runs-on: [ubuntu-latest]
+  "Get Python Version":
+    id: get-python-version
+    runs-on: ubuntu-latest
     steps:
-      - run: echo 'test'
-
-  # pre-commit:
-  #   container:
-  #     image: public.ecr.aws/docker/library/python:3.9.18-bullseye
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
