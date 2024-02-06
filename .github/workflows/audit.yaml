@@ -27,7 +27,6 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
       - run: |
           apt-get update
           apt-get install -y git
@@ -41,4 +40,5 @@ jobs:
         with:
           path: ~/.cache/pre-commit
           key: pre-commit-${{ github.base_ref }}
+      - uses: actions/checkout@v4
       - run: pre-commit run -a
