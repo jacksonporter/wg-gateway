@@ -39,4 +39,5 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pre-commit
+          key: pre-commit-${{ github.base_ref }}
       - run: pre-commit run -a
