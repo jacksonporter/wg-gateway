@@ -32,7 +32,6 @@ jobs:
           apt-get install -y git
           pip install -U pip
           pip install -U setuptools poetry pre-commit
-          poetry install --only dev
           echo "Disabling git safe directory"
           git config --global --add safe.directory '*'
       - uses: actions/cache@v4
@@ -40,4 +39,5 @@ jobs:
           path: ~/.cache/pre-commit
           key: pre-commit-${{ github.base_ref }}
       - uses: actions/checkout@v4
+      - run: poetry install --only dev
       - run: pre-commit run -a
