@@ -1,7 +1,5 @@
 tap "derailed/k9s"
-
 brew "direnv"
-# brew "docker-compose"
 brew "docker-credential-helper"
 brew "docker-credential-helper-ecr"
 brew "hadolint"

@@ -68,13 +68,8 @@ repos:
     hooks:
       - id: python-safety-dependencies-check
 
-  - repo: https://github.com/lovesegfault/beautysh
-    rev: v6.2.1
-    hooks:
-      - id: beautysh
-
   - repo: https://github.com/PyCQA/bandit
-    rev: '1.7.7'
+    rev: "1.7.7"
     hooks:
       - id: bandit
 
@@ -143,3 +138,13 @@ repos:
           - tests
         pass_filenames: false
         language: system
+      - id: hadolint
+        name: hadolint
+        entry: hadolint
+        language: system
+        files: Containerfile
+      - id: shellcheck
+        name: shellcheck
+        entry: shellcheck
+        language: system
+        files: ^.*\.sh$
