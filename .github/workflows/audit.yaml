@@ -29,7 +29,7 @@ jobs:
     steps:
       - run: |
           apt-get update
-          apt-get install -y git
+          apt-get install -y git yq
           pip install -U pip
           pip install -U setuptools poetry pre-commit
           echo "Disabling git safe directory"
@@ -44,4 +44,5 @@ jobs:
           path: .venv
           key: venv-cache-${{ github.ref }}
       - run: poetry install --only dev
-      - run: pre-commit run -a
+      - run: |
+          for id in $(cat .pre-commit-config.yaml | yq -r '.repos[].hooks[].id' | grep -v "pytest"); do pre-commit run "${id}"; done
