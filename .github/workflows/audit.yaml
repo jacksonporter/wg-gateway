@@ -1,6 +1,6 @@
 name: Audit
 
-run-name: ${{ github.actor }} is auditing source code on GitHub Actions 🚀
+run-name: ${{ github.actor }} => Audit Source Code 🚀
 
 on: [push]
 
@@ -37,7 +37,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pre-commit
-          key: pre-commit-${{ github.base_ref }}
+          key: pre-commit-${{ github.ref }}
       - uses: actions/checkout@v4
       - run: poetry install --only dev
       - run: pre-commit run -a
