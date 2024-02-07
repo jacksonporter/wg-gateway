@@ -23,13 +23,13 @@ jobs:
       - get-python-version
     runs-on: ubuntu-latest
     container:
-      image: public.ecr.aws/docker/library/python:${{ needs.get-python-version.outputs.PYTHON_VERSION }}-slim
+      image: public.ecr.aws/docker/library/python:${{ needs.get-python-version.outputs.PYTHON_VERSION }}-alpine
     permissions:
       contents: read
     steps:
       - run: |
-          apt-get update
-          apt-get install -y git yq
+          apk update
+          apk add git yq
           pip install -U pip
           pip install -U setuptools poetry pre-commit
           echo "Disabling git safe directory"
@@ -46,3 +46,28 @@ jobs:
       - run: poetry install --only dev
       - run: |
           for id in $(cat .pre-commit-config.yaml | yq -r '.repos[].hooks[].id' | grep -v "pytest"); do pre-commit run "${id}"; done
+
+  unit-test:
+    needs:
+      - get-python-version
+    runs-on: ubuntu-latest
+    container:
+      image: public.ecr.aws/docker/library/python:${{ needs.get-python-version.outputs.PYTHON_VERSION }}-alpine
+    permissions:
+      contents: read
+    steps:
+      - run: |
+          apk update
+          apk add git yq
+          pip install -U pip
+          pip install -U setuptools poetry
+          echo "Disabling git safe directory"
+          git config --global --add safe.directory '*'
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: .venv
+          key: venv-cache-${{ github.ref }}
+      - run: poetry install --only dev
+      - run: |
+          poetry run pytest --cov-fail-under=0 tests/unit
