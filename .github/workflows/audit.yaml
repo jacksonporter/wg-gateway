@@ -29,7 +29,7 @@ jobs:
     steps:
       - run: |
           apk update
-          apk add git yq
+          apk add git yq tar
           pip install -U pip
           pip install -U setuptools wheel poetry pre-commit
           echo "Disabling git safe directory"
@@ -58,7 +58,7 @@ jobs:
     steps:
       - run: |
           apk update
-          apk add git
+          apk add git tar
           pip install -U pip
           pip install -U setuptools wheel poetry
           echo "Disabling git safe directory"
