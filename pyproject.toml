@@ -55,6 +55,14 @@ mypy = "^1.8.0"
 pre-commit = "^3.6.0"
 setuptools = "^69.0.3"
 
+[tool.poetry.scripts]
+wg-gateway = 'wg_gateway.entrypoint:main'
+wg-gateway-cli = 'wg_gateway.entrypoint:main'
+wgc = 'wg_gateway.entrypoint:main'
+wg-gateway-api = 'wg_gateway.entrypoint:main'
+wga = 'wg_gateway.entrypoint:main'
+wg-gateway-ui = 'wg_gateway.entrypoint:main'
+wgu = 'wg_gateway.entrypoint:main'
 
 [build-system]
 requires = ["poetry-core"]
