@@ -1,6 +1,6 @@
 name: Audit
 
-run-name: ${{ github.actor }} => Audit Source Code 🚀
+run-name: ${{ github.actor }} -> Audit Source Code 🚀
 
 on: [push]
 
@@ -39,5 +39,9 @@ jobs:
           path: ~/.cache/pre-commit
           key: pre-commit-${{ github.ref }}
       - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: ~/.venv
+          key: venv-cache-${{ github.ref }}
       - run: poetry install --only dev
       - run: pre-commit run -a
