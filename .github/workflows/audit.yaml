@@ -31,7 +31,7 @@ jobs:
           apk update
           apk add git yq
           pip install -U pip
-          pip install -U setuptools poetry pre-commit
+          pip install -U setuptools wheel poetry pre-commit
           echo "Disabling git safe directory"
           git config --global --add safe.directory '*'
       - uses: actions/cache@v4
@@ -58,9 +58,9 @@ jobs:
     steps:
       - run: |
           apk update
-          apk add git yq
+          apk add git
           pip install -U pip
-          pip install -U setuptools poetry
+          pip install -U setuptools wheel poetry
           echo "Disabling git safe directory"
           git config --global --add safe.directory '*'
       - uses: actions/checkout@v4
