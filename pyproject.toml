@@ -6,6 +6,31 @@ authors = ["Jackson Porter <jackson@jacksonporterjp.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{ include = "wg_gateway" }]
+homepage = "https://github.com/jacksonporter/wg-gateway"
+repository = "https://github.com/jacksonporter/wg-gateway"
+documentation = "https://github.com/jacksonporter/wg-gateway"
+keywords = [
+    "wiregaurd",
+    "ui",
+    "web",
+    "cli",
+    "api",
+    "networking",
+    "linux",
+    "unix",
+    "wg",
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Version Control :: Git",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: System :: Networking",
+]
 
 [tool.poetry.dependencies]
 python = "^3.12.1"
@@ -28,6 +53,7 @@ pytest-cov = "^4.1.0"
 flake8 = "^7.0.0"
 mypy = "^1.8.0"
 pre-commit = "^3.6.0"
+setuptools = "^69.0.3"
 
 
 [build-system]
