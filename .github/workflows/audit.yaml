@@ -23,13 +23,13 @@ jobs:
       - get-python-version
     runs-on: ubuntu-latest
     container:
-      image: public.ecr.aws/docker/library/python:${{ needs.get-python-version.outputs.PYTHON_VERSION }}-alpine
+      image: public.ecr.aws/docker/library/python:${{ needs.get-python-version.outputs.PYTHON_VERSION }}-slim
     permissions:
       contents: read
     steps:
       - run: |
-          apk update
-          apk add git yq tar
+          apt-get update
+          apt-get install -y --no-install-recommends git yq
           pip install -U pip
           pip install -U setuptools wheel poetry pre-commit
           echo "Disabling git safe directory"
@@ -52,7 +52,7 @@ jobs:
       - get-python-version
     runs-on: ubuntu-latest
     container:
-      image: public.ecr.aws/docker/library/python:${{ needs.get-python-version.outputs.PYTHON_VERSION }}-alpine
+      image: public.ecr.aws/docker/library/python:${{ needs.get-python-version.outputs.PYTHON_VERSION }}-slim
     permissions:
       contents: read
     steps:

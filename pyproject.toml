@@ -35,13 +35,18 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.12.1"
 click = "^8.1.7"
+pydantic = "^2.6.1"
 
 [tool.poetry.group.ui.dependencies]
 nicegui = "^1.4.13"
+fastapi = "^0.109.2"
+httpx = "^0.26.0"
 
 [tool.poetry.group.api.dependencies]
 fastapi = "^0.109.1"
 uvicorn = "^0.27.0.post1"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 
 [tool.poetry.group.cli.dependencies]
 requests = "^2.31.0"
@@ -59,10 +64,10 @@ setuptools = "^69.0.3"
 wg-gateway = 'wg_gateway.entrypoint:main'
 wg-gateway-cli = 'wg_gateway.entrypoint:main'
 wgc = 'wg_gateway.entrypoint:main'
-wg-gateway-api = 'wg_gateway.entrypoint:main'
-wga = 'wg_gateway.entrypoint:main'
-wg-gateway-ui = 'wg_gateway.entrypoint:main'
-wgu = 'wg_gateway.entrypoint:main'
+wg-gateway-api = 'wg_gateway.api:api'
+wga = 'wg_gateway.api:api'
+wg-gateway-ui = 'wg_gateway.ui:ui'
+wgu = 'wg_gateway.ui:ui'
 
 [build-system]
 requires = ["poetry-core"]
